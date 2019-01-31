@@ -1,0 +1,115 @@
+﻿@{
+    ViewData["Title"] = "Add Employees";
+}
+<h5>@ViewData["Title"]</h5>
+
+<div>
+    <div>
+        <span><b>Select Employee:</b></span>
+        <select disabled="disabled" oncancel="validate('list')">
+            <option value="-1">Select</option>
+            <option selected="selected">Prajwol Adhikari (Myself) </option>
+        </select>
+    </div>
+    <div>
+        <span><b>View</b></span>
+        <table>
+            <tbody>
+                <tr>
+                    <td>
+                        <input type="radio" checked="checked" name="hourly" value="fulltime" />
+                        <label>Detailed Report</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="radio" name="hourly" value="parttime" />
+                        <label>Total Worked Hours</label>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <span><b>Reports</b></span>
+        <table>
+            <tbody>
+                <tr>
+                    <td>
+                        <input type="radio" checked="checked" name="timely" value="yearly" />
+                        <label>Yearly Report</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="radio" name="timely" value="monthly" />
+                        <label>Monthly Report</label>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <span><b>Please select year: </b></span>
+        <select>
+            <option value="2017">2017</option>
+            <option value="2018">2018</option>
+            <option value="2019" selected="selected">2019</option>
+        </select>
+    </div>
+    <div>
+        <span><b>Please select month and year: </b></span>
+        <select>
+            <option selected="selected" value="1">January</option>
+            <option value="2">February</option>
+            <option value="3">March</option>
+            <option value="4">April</option>
+            <option value="5">May</option>
+            <option value="6">June</option>
+            <option value="7">July</option>
+            <option value="8">August</option>
+            <option value="9">September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12">December</option>
+        </select>
+        <select>
+            <option value="2017">2017</option>
+            <option value="2018">2018</option>
+            <option value="2019" selected="selected">2019</option>
+        </select>
+    </div>
+    <div>
+        <a class="close-btn b-21 btn btn-primary btn-sm" data-type="view" href="#">View Report</a>
+        <div style="">
+            <h5>Monthly Report: January 2019</h5>
+            <hr />
+            <span>
+                <b>Unmarked Days: </b>
+                "0 days"
+            
+                <span>
+                    (
+                    <a href="#" target="_blank">View</a>
+                    )
+                </span>
+                <br />
+             </span>
+            <b>Absences: </b>
+            "0 days"
+            <span>
+                (
+                <a href="#" target="_blank">View</a>
+                )
+            </span>
+            <br />
+            <b>Employee Worked: </b>
+            "26 Hours 59 Mins"
+            <br />
+            <hr />
+            <b>Balance Time: </b>
+            <span style="color: green;">26 Hours 59 Mins</span>
+            <b>(Until Mon, Jan 28 2019 - today's time not included)</b>
+        </div>
+    </div>
+</div>
