@@ -6,7 +6,7 @@
     .containers {
         border: 1px solid lightgray !important;
         padding: 8px 5px !important;
-        width: 420px;
+        width: 450px;
     }
 
     .standard-field {
@@ -15,9 +15,44 @@
         border-radius: .25em;
         width: 200px !important;
         margin: 0 5px 0 0;
+
     }
-    .tables {
-        margin-bottom: 0px !important;        
+
+    .glyphicon-trash {
+        color: #337ab7;
+    }
+        .glyphicon-trash:hover {
+            color: red;
+        }
+            
+    .tooltips {
+        position: relative;
+        display: inline-block;
+    }
+        
+        .tooltips .tooltiptext {
+            visibility: hidden;
+            width: 70px;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            padding: 5px 0;
+            border-radius: 6px;
+            font-family: Arial;
+
+            /*Position the tooltip*/
+            position: absolute;
+            z-index: 1;
+            margin-left: -35px; /*Use half of the width, to center the tooltip*/
+            margin-bottom: 3px;
+            bottom: 100%;
+            left: 50%;
+        }
+        .tooltips:hover .tooltiptext{
+            visibility: visible;
+        }
+    #table {
+        margin-bottom: 0px !important;
         border-collapse: collapse;
         padding: 0;
         font-family: Calibri;
@@ -25,72 +60,140 @@
         display: table;
         border-color: grey;
     }
-        .tables > tbody > tr > td {
+        #table > tbody > tr > td {
             border-bottom: 1px solid lightgray;
             padding: 5px 0 5px 0;
         }
 
-        .tables > td {
+        #table > td {
             border-top: none !important;
             vertical-align: top;
         }
 
+        
+
 </style>
 <h4>@ViewData["Title"]</h4>
 
-<div class="containers">
-    <table class="tables" cellpadding="0" cellspacing="0">
+<div id ="container" class="containers">
+    <table id="table" cellpadding="0" cellspacing="0" >
         <tbody>
             <tr>
                 <td>
-                    <input class="standard-field" name="FirstName" id="fname" type="text" placeholder="First Name" onfocus="this.placeholder = ''" onblur="capitaliseFirst()" />
+                    <input class="standard-field fname" name="FirstName" type="text" placeholder="First Name" onfocus="this.placeholder = ''" onblur="capitaliseFirst()" />
                 </td>
                 <td>
-                    <input class="standard-field" name="LastName" id="lname" type="text" placeholder="Last Name" onfocus="this.placeholder = ''" onblur="capitaliseLast()" />
+                    <input class="standard-field lname" name="LastName" type="text" placeholder="Last Name" onfocus="this.placeholder = ''" onblur="capitaliseLast()" />
+                </td>
+                <td>
+                    <a onclick="deleteRow(this)">
+                        <span class="glyphicon glyphicon-trash tooltips"><span class="tooltiptext">Delete</span></span>
+                    </a>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <input class="standard-field" name="FirstName" id="fname" type="text" placeholder="First Name" onfocus="this.placeholder = ''" onblur="capitaliseFirst()" />
+                    <input class="standard-field fname" name="FirstName" type="text" placeholder="First Name" onfocus="this.placeholder = ''" onblur="capitaliseFirst()" />
                 </td>
                 <td>
-                    <input class="standard-field" name="LastName" id="lname" type="text" placeholder="Last Name" onfocus="this.placeholder = ''" onblur="capitaliseLast()" />
+                    <input class="standard-field lname" name="LastName" type="text" placeholder="Last Name" onfocus="this.placeholder = ''" onblur="capitaliseLast()" />
+                </td>
+                <td>
+                    <a onclick="deleteRow(this)">
+                        <span class="glyphicon glyphicon-trash tooltips"><span class="tooltiptext">Delete</span></span>
+                    </a>
                 </td>
             </tr>
-
         </tbody>
 
     </table>
 </div>
-    <div style="margin-left: 10px;">
-        <a href="#" style="cursor: pointer; font-size: 14px">
-            <i class="fa fa-fw fa-plus-circle"></i>
-            Add More
-        </a>
-        <br />
-        <input type="submit" value="Add Employee(s)" class="btn btn-primary" />
-        <input type="submit" value="Cancel" class="btn btn-default" />
-    </div>
+<div style="margin-left: 10px; margin-top: 10px;">
+    <a id="add" style="cursor: pointer; font-size: 14px;">
+        <i class="fa fa-fw fa-plus-circle"></i>
+        Add More
+    </a>
+    <br />
+    
+    <input type="submit" value="Add Employee(s)" class="btn btn-primary" />
+    <input type="submit" value="Cancel" class="btn btn-default" />
+</div>
 
 <script>
-    function capitaliseFirst() {
-        var x = document.getElementById("fname");
-        x.placeholder = "First Name";
+    //function capitaliseFirst() {
+    //    var x = document.getElementById("fname");
+    //    x.placeholder = "First Name";
 
-        if (x !== "") {
-            x.value = x.value.charAt(0).toUpperCase() + x.value.slice(1);
+    //    if (x !== "") {
+    //        x.value = x.value.charAt(0).toUpperCase() + x.value.slice(1);
+    //    }
+    //}
+
+    function capitaliseFirst() {
+        var a = document.getElementsByClassName("fname");
+        for (var i = 0; i < a.length; i++) {
+            a[i].placeholder = "First Name";
+            if (a[i] !== "") {
+                a[i].value = a[i].value.charAt(0).toUpperCase() + a[i].value.slice(1);
+            }
         }
-        
     }
 
     function capitaliseLast() {
-        var y = document.getElementById("lname");
-        y.placeholder = "Last Name";
+        var y = document.getElementsByClassName("lname");
+        for (var i = 0; i < y.length; i++) {
+            y[i].placeholder = "Last Name";
+            if (y[i] !== "") {
+                y[i].value = y[i].value.charAt(0).toUpperCase() + y[i].value.slice(1);
+            }
+        }        
+    }
 
-        if (y !== "") {
-            y.value = y.value.charAt(0).toUpperCase() + y.value.slice(1);
-        } 
+    //function addFields() {
+    //    var z = document.getElementById("table");
+    //    //var z = document.createElement("tr");
+    //    z.innerHTML += '<tr><td><input class="standard-field fname" name="FirstName" type="text" placeholder="First Name" onblur="capitaliseFirst()"/></td><td><input class="standard-field lname" name="LastName" type="text" placeholder="Last Name" onblur="capitaliseLast()"/></td><td><a onclick="deleteRow(this)"><span class="glyphicon glyphicon-trash tooltips"><span class="tooltiptext">Delete</span></span></a></td></tr>';
+    //    //document.getElementById("table").appendChild(z);
+
         
+    //}
+
+    function deleteRow(o) {
+        var table = document.getElementById("table");
+
+        for (var i = 1; i < table.rows.length; i++) {
+            var c = confirm("Do you want to delete this row");
+            if (c === true) {
+                var p = o.parentNode.parentNode;
+                p.parentNode.removeChild(p); 
+                //console.log(p);
+                break;
+            } 
+        }
+
+        //document.getElementsByClassName("tooltips")[0].style.display = 'none';
+
+
+        //var index, table = document.getElementById("table");
+        //for (var i = 1; i < table.rows.length; i++) {
+        //    table.rows[i].cells[2].onclick = function () {
+        //    var c = confirm("Do you want to delete this row");
+        //    if (c === true) {
+        //        index = this.rows[i];
+        //        table.deleteRow(index);
+        //        console.log(index);
+        //    }
+            
+            
+        //}
         
     }
 </script>
+<script>
+    $(document).ready(function () {
+        $("#add").click(function () {
+            $("#table").append('<tr><td><input class="standard-field fname" name="FirstName" type="text" placeholder="First Name" onblur="capitaliseFirst()"/></td><td><input class="standard-field lname" name="LastName" type="text" placeholder="Last Name" onblur="capitaliseLast()"/></td><td><a onclick="deleteRow(this)"><span class="glyphicon glyphicon-trash tooltips"><span class="tooltiptext">Delete</span></span></a></td></tr>')
+        });
+    });
+</script>
+

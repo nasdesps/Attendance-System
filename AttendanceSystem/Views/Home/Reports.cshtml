@@ -1,7 +1,7 @@
 ﻿@{
-    ViewData["Title"] = "Add Employees";
+    ViewData["Title"] = "Reports and Statistics";
 }
-<h5>@ViewData["Title"]</h5>
+<h4>@ViewData["Title"]</h4>
 
 <div>
     <div>
@@ -80,8 +80,8 @@
         </select>
     </div>
     <div>
-        <a class="close-btn b-21 btn btn-primary btn-sm" data-type="view" href="#">View Report</a>
-        <div style="">
+        <a class="close-btn b-21 btn btn-primary btn-sm" data-type="view" onclick="showDiv()">View Report</a>
+        <div id="reportDiv" style="display: none; color:#242323">
             <h5>Monthly Report: January 2019</h5>
             <hr />
             <span>
@@ -113,3 +113,9 @@
         </div>
     </div>
 </div>
+
+<script>
+    function showDiv() {
+        document.getElementById('reportDiv').style.display = "block";
+    }
+</script>

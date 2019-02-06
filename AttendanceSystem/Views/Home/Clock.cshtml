@@ -64,6 +64,34 @@
         border-top: 1px solid #999;
         border-bottom: 1px solid #999 !important;
     }
+    .tool {
+        position: relative;
+        display: inline-block;
+    }
+
+        .tool .hovtext {
+            visibility: hidden;
+            width: 130px;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            letter-spacing: 0.000001em;
+            font-size: 9pt;
+
+            /*Position the hov*/
+            position: absolute;
+            z-index: 1;
+            top: -5px; /*-5 px according to padding to align in center*/
+            left: 105%;
+        }
+        .tool:hover {
+            color: black;
+        }
+        .tool:hover .hovtext {
+            visibility: visible;
+        }
     /*.tablein {
         border-collapse: collapse;
         border-style: hidden;
@@ -74,134 +102,135 @@
         }*/
     
 </style>
-<h5><b>User Name</b></h5>
-<table cellpadding="0" cellspacing="0" class="table-responsive table-bb" >
-    <tbody>
-        <tr>
-            <td>
-                <div style="width: 165px"><button id="myBtn" class="btn btn-default">Sign In</button></div>
-                <div id="myModal" class="modal">
-                    <div class="modal-content">
-                        <span class="close"><strong>&times;</strong></span>
-                        <h4><strong>Sign-in</strong></h4>
-                        <p>Reason: </p>
-                        <textarea rows="3" cols="40"></textarea>
-                        <hr />
-                        <button class="btn btn-primary">Sign In</button>
-                        <button id="cancel" class="btn btn-default">Cancel</button>
+<div>
+    <h5><b>User Name</b></h5>
+    <table cellpadding="0" cellspacing="0" class="table-responsive table-bb">
+        <tbody>
+            <tr>
+                <td>
+                    <div style="width: 165px"><button id="myBtn" class="btn btn-default">Sign In</button></div>
+                    <div id="myModal" class="modal">
+                        <div class="modal-content">
+                            <span class="close"><strong>&times;</strong></span>
+                            <h4><strong>Sign-in</strong></h4>
+                            <p>Reason: </p>
+                            <textarea rows="3" cols="40"></textarea>
+                            <hr />
+                            <button class="btn btn-primary">Sign In</button>
+                            <button id="cancel" class="btn btn-default">Cancel</button>
+                        </div>
                     </div>
-                </div>
-            </td>
-            <td class="tdata">
-                <span>Signed in at</span>
-                <big><span>10:00 AM</span></big>
-                <span>on Monday, January 28, 2019</span>                
-            </td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td style="padding: 0px; min-height: 10px;"></td>
-        </tr>
-        <tr style="display: none">
-            <td colspan="2"></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td style="width: 100%">
-                <div>
-                    <table class="table-condensed table-hover tablein">
-                        <tbody>
-                            <tr>
-                                <td></td>
-                                <th>Clock In</th>
-                                <th>Clock Out</th>
-                                <th>Time Spend</th>
-                                <td></td>
-                                @*<td></td>*@
-                            </tr>
-                            <tr>
-                                <td>Today</td>
-                                <td>
-                                    <span>10:00 AM</span>
-                                </td>
-                                <td>
-                                    <span>7:02 PM</span>
-                                </td>
-                                @*<td rowspan="2"></td>*@
-                                <td>
-                                    8 Hrs 2 Mins
-                                </td>
-                                <td>
-                                    <a>
-                                        <img alt="Edit Clock-In / Clock-out Time" />
-                                    </a>
-                                </td>
-                                @*<td></td>*@
-                            </tr>
-                            <tr>
-                                <td>Thu, Jan 31</td>
-                                <td>
-                                    <span>10:10 AM</span>
-                                </td>
-                                <td>
-                                    <span>7:05 PM</span>
-                                </td>
-                                @*<td rowspan="2"></td>*@
-                                <td>
-                                    7 Hrs 55 Mins
-                                </td>
-                                <td>
-                                    <a>
-                                        <img alt="Edit Clock-In / Clock-out Time" />
-                                    </a>
-                                </td>
-                                
-                            </tr>
-                            <tr>
-                                <td class="lastrow" colspan="3">
-                                    <style>
-                                    </style>
-                                    Total:
-                                </td>
-                                <td class="lastrow" colspan="2">
-                                    <span style="float: left !important">8 Hrs 2 Mins</span>
-                                </td>
-                                @*<td></td>*@
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2"></td>
-        </tr>
-        <tr>
-            <td>Total Absences in 2019:</td>
-            <td>
-                <span>0 day(s)</span>&nbsp;
-                <a href="#" target="_blank">View Absence(s)</a>
-            </td>            
-        </tr>
-        <tr>
-            <td>Absences in Jan 2019:</td>
-            <td>0 Day(s)</td>
-        </tr>
-        <tr>
-            <td>Unmarked days in Jan 2019:</td>
-            <td>2 Day(s)</td>
-        </tr>
-        <tr>
-            <td>Time Spent in Jan 2019:</td>
-            <td>8 Hrs 2 Mins</td>
-        </tr>
-        <tr>
-            <td>Unmarked days in 2019:</td>
-            <td>0 Day(s)</td>
-        </tr>
-    </tbody>
-</table>
+                </td>
+                <td class="tdata">
+                    <span>Signed in at</span>
+                    <big><span>10:00 AM</span></big>
+                    <span>on Monday, January 28, 2019</span>
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td style="padding: 0px; min-height: 10px;"></td>
+            </tr>
+            <tr style="display: none">
+                <td colspan="2"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td style="width: 100%">
+                    <div>
+                        <table class="table-condensed table-hover tablein">
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <th>Clock In</th>
+                                    <th>Clock Out</th>
+                                    <th>Time Spend</th>
+                                    <td></td>
+                                    @*<td></td>*@
+                                </tr>
+                                <tr>
+                                    <td>Today</td>
+                                    <td>
+                                        <span>10:00 AM</span>
+                                    </td>
+                                    <td>
+                                        <span>7:02 PM</span>
+                                    </td>
+                                    @*<td rowspan="2"></td>*@
+                                    <td>
+                                        8 Hrs 2 Mins
+                                    </td>
+                                    <td>
+                                        <a class="tool">
+                                            <span class="glyphicon glyphicon-pencil"><span class="hovtext">Edit Clock-In / Clock-Out Time</span></span>
+                                        </a>
+                                    </td>
+                                    @*<td></td>*@
+                                </tr>
+                                <tr>
+                                    <td>Thu, Jan 31</td>
+                                    <td>
+                                        <span>10:10 AM</span>
+                                    </td>
+                                    <td>
+                                        <span>7:05 PM</span>
+                                    </td>
+                                    @*<td rowspan="2"></td>*@
+                                    <td>
+                                        7 Hrs 55 Mins
+                                    </td>
+                                    <td>
+                                        <a class="tool">
+                                            <span class="glyphicon glyphicon-pencil hov"><span class="hovtext">Edit Clock-In / Clock-Out Time</span></span>
+                                        </a>
+                                    </td>
 
+                                </tr>
+                                <tr>
+                                    <td class="lastrow" colspan="3">
+                                        <style>
+                                        </style>
+                                        Total:
+                                    </td>
+                                    <td class="lastrow" colspan="2">
+                                        <span style="float: left !important">8 Hrs 2 Mins</span>
+                                    </td>
+                                    @*<td></td>*@
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"></td>
+            </tr>
+            <tr>
+                <td>Total Absences in 2019:</td>
+                <td>
+                    <span>0 day(s)</span>&nbsp;
+                    <a href="@Url.Action("Absence","Home")" target="_blank">View Absence(s)</a>
+                </td>
+            </tr>
+            <tr>
+                <td>Absences in Jan 2019:</td>
+                <td>0 Day(s)</td>
+            </tr>
+            <tr>
+                <td>Unmarked days in Jan 2019:</td>
+                <td>2 Day(s)</td>
+            </tr>
+            <tr>
+                <td>Time Spent in Jan 2019:</td>
+                <td>8 Hrs 2 Mins</td>
+            </tr>
+            <tr>
+                <td>Unmarked days in 2019:</td>
+                <td>0 Day(s)</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 <script>
     var modal = document.getElementById('myModal');
 
