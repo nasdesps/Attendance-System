@@ -1,34 +1,8 @@
 ﻿@{
     ViewData["Title"] = "Absence";
 }
-<style>
-    *{
-        font-family: Calibri;
-    }
-    table {
-        margin: 0;
-        border-collapse: collapse;
-        box-sizing: border-box;
-        vertical-align: middle;
-        width: 314px;
-        font-size: 11pt;
-    }
-    thead{
-        font-weight: bold;        
-    }
-
-    .glpen:hover{
-        color: black;
-        text-decoration:none;
-    }
-    .gltrash:hover {
-        color: red;
-        text-decoration: none;
-    }
-        
-</style>
 <div class="container-fluid">
-    <br />  
+    <br />
     <h4><b>User Name</b></h4>
     <br />
     <div>
@@ -64,32 +38,35 @@
             <tbody>
                 <tr>
                     <td>
-                        Sick
+                        <input type="hidden" name="hiddenID" id="hiddenID_0" value="" />
+                        <input name="txtName" type="text" value="Sick" id="txtTitle">
                     </td>
                     <td>
-                        1<sup>st</sup> February 2019
+                        <input id="hasDatepicker1" name="MyDate1" type="text" value="1-Feb-2019" />
                     </td>
                     <td>
-                        <a href="@Url.Action("Edit","Home")">
-                            <span id="myBtn" class="glyphicon glyphicon-pencil glpen" title="Edit Date"></span>
+                        <a>
+                            <span class="glyphicon glyphicon-floppy-disk" title="save"></span>
                         </a>
                         
                         <a style="margin-left: 5px;" onclick="deleteRow(this)">
-                            <span class="glyphicon glyphicon-trash gltrash" title="Delete"></span>
+                            <span class="glyphicon glyphicon-trash  gltrash" title="Delete"></span>
                         </a>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        Personal Leave
+                        <input type="hidden" name="hiddenID" id="hiddenID_0" value="" />
+                        <input name="txtName" type="text" value="Personal Leave" id="txtTitle">
                     </td>
                     <td>
-                        25<sup>th</sup> January 2019
+                        <input id="hasDatepicker2" name="MyDate2" type="text" value="7-Feb-2019" />
                     </td>
                     <td>
-                        <a href="@Url.Action("Edit","Home")">
-                            <span class="glyphicon glyphicon-pencil glpen" title="Edit Date"></span>
+                        <a>
+                            <span class="glyphicon glyphicon-floppy-disk" title="save"></span>
                         </a>
+
                         <a style="margin-left: 5px;" onclick="deleteRow(this)">
                             <span class="glyphicon glyphicon-trash  gltrash" title="Delete"></span>
                         </a>
@@ -110,7 +87,17 @@
                 p.parentNode.removeChild(p);
                 break;
             }
-
         }
-    }
+    }    
+</script>
+<script>
+    $(function () {
+        $("#hasDatepicker1, #hasDatepicker2").datepicker(
+            {
+                dateFormat: "d-M-yy",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: '2010:2030'
+            });
+    });
 </script>

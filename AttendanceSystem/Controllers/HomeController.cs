@@ -1,25 +1,54 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using AttendanceSystem.Models;
+using AttendanceSystem.Services;
+using AttendanceSystem.ViewModels;
 
 namespace AttendanceSystem.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IEmployeeData _employeeData;
+        private readonly IDateTime _dateTime;
+
+        public HomeController (IEmployeeData employeeData, IDateTime dateTime)
+        {
+            _employeeData = employeeData;
+            _dateTime = dateTime;
+        }
         public IActionResult Index()
         {
             return View();
         }
 
+        [HttpGet]
         public IActionResult Clock()
         {
-            ViewData["Message"] = "Add one or more employees by entering their information below. All fields are mandatory";
-
             return View();
+
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Clock(EmployeeSignInModel model)
+        {
+            var serverTime = _dateTime.Now;
+            if (ModelState.IsValid)
+            {
+                var newTime = new Employee
+                {
+                    ClockIn = model.ClockIn,
+                    ClockOut = model.ClockOut,
+                };
+                newTime = _employeeData.SignIn(newTime);
+                return RedirectToAction(nameof(Clock), new { id = newTime.ID });
+                
+            }
+            else
+            {
+                return View();
+            }
+            
         }
 
         public IActionResult Employees()
@@ -38,10 +67,14 @@ namespace AttendanceSystem.Controllers
         {
             return View();
         }
-
+        public IActionResult Edit()
+        {
+            return View();
+        }
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
     }
 }

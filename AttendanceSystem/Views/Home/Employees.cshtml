@@ -190,7 +190,7 @@
     }
 </script>
 <script>
-    $(document).ready(function () {
+    $(function () {
         $("#add").click(function () {
             $("#table").append('<tr><td><input class="standard-field fname" name="FirstName" type="text" placeholder="First Name" onblur="capitaliseFirst()"/></td><td><input class="standard-field lname" name="LastName" type="text" placeholder="Last Name" onblur="capitaliseLast()"/></td><td><a onclick="deleteRow(this)"><span class="glyphicon glyphicon-trash tooltips"><span class="tooltiptext">Delete</span></span></a></td></tr>')
         });

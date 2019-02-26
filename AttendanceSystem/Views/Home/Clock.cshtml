@@ -2,7 +2,13 @@
     ViewData["Title"] = "About";
 }
 <style>
-    .modal {
+    *{
+        font-size: 11pt;
+    }
+    strong{
+        font-size: 18pt;
+    }
+    #myModal {
         display: none; /*Hidden in default*/
         position: fixed; /*Stay in place*/
         z-index: 1; /*Display on top*/
@@ -22,20 +28,19 @@
         width: 25%;
         background-color: #fefefe;
     }
-    .close {
+    .close > strong {
         float: right;
         font-weight: bold;
-        color: #1f1e1e;
-        font-size: 28px;
-        
+        color: #272626;        
     }
 
     .close:hover,
-    .close:focus {
-        color: rgb(0,0,0);
+    .close:focus > strong {
+        color: black;
         text-decoration: none;
         cursor: pointer;
     }
+
     .tdata {
         padding: 0px;
         vertical-align: middle;
@@ -109,12 +114,12 @@
             <tr>
                 <td>
                     <div style="width: 165px"><button id="myBtn" class="btn btn-default">Sign In</button></div>
-                    <div id="myModal" class="modal">
+                    <div id="myModal">
                         <div class="modal-content">
                             <span class="close"><strong>&times;</strong></span>
                             <h4><strong>Sign-in</strong></h4>
                             <p>Reason: </p>
-                            <textarea rows="3" cols="40"></textarea>
+                            <textarea rows="4" cols="46"></textarea>
                             <hr />
                             <button class="btn btn-primary">Sign In</button>
                             <button id="cancel" class="btn btn-default">Cancel</button>
@@ -231,6 +236,13 @@
         </tbody>
     </table>
 </div>
+<script>
+    $(#myBtn).click(function () {
+        $(this).text(function (i, v) {
+            return v === 'Sign In' ? 'Sign Out' : 'Sign In'
+        })
+    });
+</script>
 <script>
     var modal = document.getElementById('myModal');
 
